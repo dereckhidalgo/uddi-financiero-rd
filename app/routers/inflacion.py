@@ -8,7 +8,25 @@ import re
 router = APIRouter()
 
 
-@router.get("/inflacion", summary="Consultar índice de inflación por período")
+@router.get(
+    "/inflacion",
+    summary="Consultar índice de inflación por período",
+    description="""
+Retorna el índice de inflación mensual de República Dominicana para un período dado.
+
+**Formato del período:** `yyyymm`
+
+| Ejemplo | Descripción |
+|---|---|
+| `202301` | Enero 2023 |
+| `202412` | Diciembre 2024 |
+| `202603` | Marzo 2026 |
+
+**Períodos disponibles:** desde `202301` hasta `202603`.
+
+**Fuente de datos:** Banco Central de la República Dominicana (BCRD).
+""",
+)
 def consultar_inflacion(
     periodo: str,
     request: Request,

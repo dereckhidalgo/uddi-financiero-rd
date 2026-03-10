@@ -10,7 +10,27 @@ from datetime import datetime
 router = APIRouter()
 
 
-@router.get("/uso-servicios", summary="Consulta de uso de Web Services")
+@router.get(
+    "/uso-servicios",
+    summary="Consulta de uso de Web Services",
+    description="""
+Retorna el log de todas las invocaciones realizadas a los servicios web.
+
+**Filtros opcionales:**
+
+| Parámetro | Descripción | Ejemplo |
+|---|---|---|
+| `nombre_ws` | Nombre del servicio | `tasa-cambiaria` |
+| `fecha_inicio` | Fecha inicial del rango | `2026-03-01` |
+| `fecha_fin` | Fecha final del rango | `2026-03-10` |
+
+**Nombres de servicios disponibles:**
+`clientes`, `tasa-cambiaria`, `tasa-cambiaria/monedas`, `inflacion`,
+`salud-financiera`, `historial-crediticio`, `uso-servicios`
+
+> Retorna máximo **100 registros** ordenados del más reciente al más antiguo.
+""",
+)
 def consultar_uso_servicios(
     request: Request,
     nombre_ws: Optional[str] = None,

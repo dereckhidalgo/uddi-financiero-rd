@@ -53,7 +53,33 @@ async def obtener_tasa_bcrd(codigo_iso: str) -> float | None:
     return moneda["fallback"] if moneda else None
 
 
-@router.get("/tasa-cambiaria", summary="Consultar tasa de cambio según código ISO 4217")
+@router.get(
+    "/tasa-cambiaria",
+    summary="Consultar tasa de cambio según código ISO 4217",
+    description="""
+Retorna la tasa de cambio de una moneda extranjera expresada en **Pesos Dominicanos (DOP)**.
+
+El código de moneda debe seguir el estándar **ISO 4217** (3 letras mayúsculas).
+
+**Monedas soportadas:**
+
+| Código | Moneda |
+|---|---|
+| `USD` | Dólar Estadounidense |
+| `EUR` | Euro |
+| `GBP` | Libra Esterlina |
+| `CAD` | Dólar Canadiense |
+| `CHF` | Franco Suizo |
+| `JPY` | Yen Japonés |
+| `MXN` | Peso Mexicano |
+| `COP` | Peso Colombiano |
+| `BRL` | Real Brasileño |
+| `HTG` | Gourde Haitiano |
+| `CNY` | Yuan Chino |
+
+**Fuente:** Banco Central RD en tiempo real. Si no está disponible, se retorna el último valor en caché.
+""",
+)
 async def consultar_tasa_cambiaria(
     codigo_moneda: str,
     request: Request,

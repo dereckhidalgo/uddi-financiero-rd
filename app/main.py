@@ -6,10 +6,58 @@ from app import models
 
 models.Base.metadata.create_all(bind=engine)
 
+description = """
+## UDDI — Servicios Web Financieros República Dominicana
+
+Sistema de consulta de información financiera de RD expuesto como API REST.
+
+---
+
+### 📋 Servicios disponibles
+
+| Servicio | Descripción |
+|---|---|
+| **Clientes** | Lista de cédulas y RNC disponibles para consulta |
+| **Tasa Cambiaria** | Tasa de cambio en DOP según código ISO 4217 |
+| **Índice de Inflación** | Porcentaje de inflación mensual por período |
+| **Salud Financiera** | Estado financiero de un cliente por cédula o RNC |
+| **Historial Crediticio** | Deudas registradas de un cliente por cédula o RNC |
+| **Uso de Servicios** | Log de invocaciones con filtros por nombre y fecha |
+
+---
+
+### 🪙 Códigos de moneda soportados (ISO 4217)
+`USD` `EUR` `GBP` `CAD` `CHF` `JPY` `MXN` `COP` `BRL` `DKK` `SEK` `NOK` `CNY` `HTG`
+
+### 📅 Períodos de inflación disponibles
+Desde `202301` hasta `202603` — formato `yyyymm`
+
+### 👤 Cédulas de prueba
+`00100123456` `00200234567` `00300345678` `00400456789`
+`00500567890` `00600678901` `00700789012` `00800890123`
+
+### 🏢 RNC de prueba
+`131000124` `132000258` `133000369` `134000478`
+
+---
+
+### ⚠️ Notas
+- La tasa cambiaria intenta obtenerse del **Banco Central RD** en tiempo real. Si no está disponible, se retorna el último valor en caché.
+- Todos los endpoints registran automáticamente su uso, consultable en `/api/v1/uso-servicios`.
+- La moneda base siempre es **DOP (Peso Dominicano)**.
+"""
+
 app = FastAPI(
     title="UDDI - Servicios Web Financieros RD",
-    description="Sistema de servicios web financieros para República Dominicana",
+    description=description,
     version="1.0.0",
+    contact={
+        "name": "UDDI Financiero RD",
+        "url": "https://github.com/dereckhidalgo/uddi-financiero-rd",
+    },
+    license_info={
+        "name": "MIT",
+    },
 )
 
 app.add_middleware(
