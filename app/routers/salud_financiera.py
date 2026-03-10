@@ -14,7 +14,7 @@ router = APIRouter()
     description="""
 Retorna el estado de salud financiera de un cliente identificado por su **Cédula** o **RNC**.
 
-> Usa `/api/v1/clientes` para ver la lista completa de las cedulas y RNC disponibles.
+> Usa `/api/v1/clientes` para ver la lista de cédulas y RNC disponibles.
 """,
 )
 def consultar_salud_financiera(
@@ -22,7 +22,7 @@ def consultar_salud_financiera(
     request: Request,
     db: Session = Depends(get_db)
 ):
-    cedula_rnc = cedula_rnc.strip()
+    cedula_rnc = cedula_rnc.strip().replace("-", "").replace(" ", "")
 
     if not cedula_rnc:
         raise HTTPException(status_code=400, detail="Cédula o RNC requerido")
