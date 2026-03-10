@@ -18,11 +18,9 @@ Retorna el índice de inflación mensual de República Dominicana para un perío
 
 | Ejemplo | Descripción |
 |---|---|
-| `202301` | Enero 2023 |
-| `202412` | Diciembre 2024 |
 | `202603` | Marzo 2026 |
 
-**Períodos disponibles:** desde `202301` hasta `202603`.
+**Períodos disponibles:** desde `201501` hasta `202603`.
 
 **Fuente de datos:** Banco Central de la República Dominicana (BCRD).
 """,

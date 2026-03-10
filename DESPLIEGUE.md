@@ -121,13 +121,6 @@ https://uddi-financiero-rd.onrender.com/docs
 | 133000369 | Distribuidora Norte C. por A. | ✅ Saludable |
 | 134000478 | Importadora del Caribe S.R.L. | ❌ No Saludable |
 
-### Monedas disponibles
-`DOL`, `EUR`, `PES`, `GBP`, `CAD`, `CHF`, `JPY`
-
-### Períodos de inflación disponibles
-`202301` hasta `202503`
-
----
 
 ## Stack tecnológico
 
