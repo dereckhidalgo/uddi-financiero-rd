@@ -14,25 +14,7 @@ router = APIRouter()
     description="""
 Retorna el historial de deudas registradas de un cliente identificado por su **Cédula** o **RNC**.
 
-**Validaciones aplicadas:**
-- Cédula: 11 dígitos, algoritmo de verificación oficial RD
-- RNC: 9 dígitos, primer dígito debe ser 1, 4 o 5, algoritmo de verificación oficial RD
-- Acepta formato con o sin guiones
-
-Cada registro incluye:
-- `rnc_empresa`: RNC de la empresa acreedora
-- `concepto_deuda`: descripción de la deuda
-- `fecha`: fecha del registro
-- `monto_adeudado`: monto en DOP
-
-**Cédulas de prueba disponibles:**
-`00100123456`, `00200234567`, `00300345678`, `00400456789`,
-`00500567890`, `00600678901`, `00700789012`, `00800890123`
-
-**RNC de prueba disponibles:**
-`131000124`, `132000258`, `133000369`, `134000478`
-
-> Usa `/api/v1/clientes` para ver la lista completa.
+> Usa `/api/v1/clientes` para ver la lista completa de las cedulas y RNC disponibles.
 """,
 )
 def consultar_historial_crediticio(
