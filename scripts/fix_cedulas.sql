@@ -24,18 +24,31 @@ INSERT INTO clientes (cedula_rnc, nombre, tipo) VALUES
     ('131000037',   'Importadora del Caribe S.R.L.', 'RNC');
 
 -- Reinsertar salud financiera
+-- Montos coinciden exactamente con la suma del historial crediticio
 INSERT INTO salud_financiera (cedula_rnc, indicador, comentario, monto_adeudado) VALUES
-    ('00110000007', 'S', 'Cliente con buen historial de pagos. Sin deudas vencidas.',         0.00),
+    -- 00110000007: 45000 + 8500 = 53500 (tiene deudas pero al día → S)
+    ('00110000007', 'S', 'Cliente con deudas activas pero al día en sus pagos.',          53500.00),
+    -- 00110000015: 45000 + 15000 + 25000 = 85000 (deudas vencidas → N)
     ('00110000015', 'N', 'Cliente con deudas vencidas en múltiples entidades.',           85000.00),
-    ('00110000023', 'S', 'Cliente al día. Deudas en proceso de pago según acuerdo.',      12500.00),
+    -- 00110000023: 12500 (pago regular → S)
+    ('00110000023', 'S', 'Cliente al día. Deuda en proceso de pago según acuerdo.',      12500.00),
+    -- 00110000031: 150000 (mora → N)
     ('00110000031', 'N', 'Deuda en mora mayor a 90 días con entidad bancaria.',          150000.00),
+    -- 00110000049: sin historial → S
     ('00110000049', 'S', 'Sin deudas registradas. Excelente historial.',                      0.00),
+    -- 00110000056: 15000 + 20000 + 10000 = 45000 (múltiples deudas → N)
     ('00110000056', 'N', 'Deudas con múltiples comercios y tarjeta de crédito.',          45000.00),
+    -- 00110000064: 23000 (pagos regulares → S)
     ('00110000064', 'S', 'Deuda activa pero con pagos regulares.',                        23000.00),
+    -- 00110000072: sin historial → S
     ('00110000072', 'S', 'Cliente nuevo. Sin historial negativo.',                            0.00),
-    ('131000002',   'S', 'Empresa con buenas referencias comerciales. Pagos al día.',         0.00),
+    -- 131000002: 200000 (línea de crédito activa al día → S)
+    ('131000002',   'S', 'Empresa con línea de crédito activa. Pagos al día.',           200000.00),
+    -- 131000011: 180000 + 140000 = 320000 (deudas vencidas → N)
     ('131000011',   'N', 'Empresa con deudas vencidas con proveedores.',                 320000.00),
+    -- 131000029: 75000 (acuerdo de pago → S)
     ('131000029',   'S', 'Empresa solvente con acuerdos de pago activos.',                75000.00),
+    -- 131000037: 450000 + 440000 = 890000 (reestructuración → N)
     ('131000037',   'N', 'Empresa en proceso de reestructuración de deudas.',            890000.00);
 
 -- Reinsertar historial crediticio
