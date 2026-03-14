@@ -29,21 +29,9 @@ Sistema de consulta de información financiera de RD expuesto como API REST.
 
 ---
 
-### 🪙 Códigos de moneda soportados (ISO 4217)
-`USD` `EUR` `GBP` `CAD` `CHF` `JPY` `MXN` `COP` `BRL` `DKK` `SEK` `NOK` `CNY` `HTG`
-
-### 📅 Períodos de inflación disponibles
-Desde `201501` hasta `202603` — formato `yyyymm`
-
-### 📊 Dashboard
+### Dashboard
 Visualiza el uso de los servicios en: `/dashboard`
 
----
-
-### ⚠️ Notas
-- La tasa cambiaria intenta obtenerse del **Banco Central RD** en tiempo real. Si no está disponible, se retorna el último valor en caché.
-- Todos los endpoints registran automáticamente su uso, consultable en `/api/v1/uso-servicios`.
-- La moneda base siempre es **DOP (Peso Dominicano)**.
 """
 
 app = FastAPI(
