@@ -32,7 +32,7 @@ def consultar_historial_crediticio(
         raise HTTPException(
             status_code=400,
             detail="Cédula o RNC inválido. Verifique el número ingresado. "
-                   "Cédula: 11 digitos. RNC: 9 dígitos comenzando en 1, 4 o 5."
+                   "Cédula: 11 digitos. RNC: 9 digitos comenzando en 1, 4 o 5."
         )
 
     registrar_uso(
